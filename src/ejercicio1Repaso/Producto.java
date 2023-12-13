@@ -9,7 +9,8 @@ public class Producto {
 	private int seccion; //tres secciones (se guardan en un int y no un boolean porque son mas de dos opciones)
 	private boolean enVenta;
 	//Acabamos de definir el objeto en nuestra aplicación 
-	//los constructores son metodos que se utilizan para instancair/crear objetos y siempre se realizan eln la clase POJO
+	
+	//los constructores son metodos que se utilizan para instanciar/crear objetos y siempre se realizan eln la clase POJO
 	//Constructor vacío 
 	public void Producto() {
 		
@@ -22,5 +23,51 @@ public class Producto {
 		this.seccion = seccion;
 		this.enVenta = enVenta;
 	}
+	
+	//Getters and setters 
+	public String getNombre() {
+		return nombre; 
+	}
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
+	public double getPrecioFabrica() {
+		return precioFabrica;
+	}
+	public void setPrecioFabrica(double precioFabrica) {
+		this.precioFabrica = precioFabrica;
+	}
+	public int getSeccion() {
+		return seccion;
+	}
+	public void setSeccion(int seccion) {
+		this.seccion = seccion;
+	}
+	public boolean isEnVenta() {
+		return enVenta;
+	}
+	public void setEnVenta(boolean enVenta) {
+		this.enVenta = enVenta;
+	}
+	//Los  métodos de obtención “getter” y asignación “setter , sirven para acceder a
+	//los atributos de un objeto desde otra clase(tenemos que tener en cuenta el nivel de acceso)
+	//el nivel de acceso de lo que sirve es para ver si una parte del código puede acceder 
+	//a otras partes del código (hay tres niveles de acceso 1º Ninguno(se puede acceder a él) 2º Public(pueden acceder desde cualquier paquete o clase ) 
+	//3º Private (solo se peude acceder a ellos desde la misma clase, para acceder a atributos private se realiza con los getters and setters) 
+	
+	
+	//Método ToString
+	@Override
+	public String toString() {
+		return "Producto [nombre=" + nombre + ", precioFabrica=" + precioFabrica + ", seccion=" + seccion + ", enVenta="
+				+ enVenta + "]";
+	}
+	//Sirve para poder cambiar cualquier valor númerico a cadena de caracteres
+	
+
+	
+	
+	
+	
 	
 }

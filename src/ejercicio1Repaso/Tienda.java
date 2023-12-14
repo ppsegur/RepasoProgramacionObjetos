@@ -1,6 +1,7 @@
 package ejercicio1Repaso;
 
 import java.util.Arrays;
+import java.util.Iterator;
 
 public class Tienda {
 	//esta sería la clase gestión dónde eralizaremos la mayor parte de los métodos
@@ -35,6 +36,7 @@ public class Tienda {
 	public void setNumTrabajadores(int numTrabajadores) {
 		this.numTrabajadores = numTrabajadores;
 	}
+	//TOSTRING
 	@Override
 	public String toString() {
 		return "Tienda [listado=" + Arrays.toString(listado) + ", numProductos=" + numProductos + ", numTrabajadores="
@@ -47,12 +49,16 @@ public class Tienda {
 	//Métodos Crud de agregar Producto a una clase
 	//Siempre con un verbo infinitivo que describa lo que hace el método, sin ñ ni tildes, la segunda palabra del nombre del método en mayúcula.
 	//La segunda palabra(void en este caso) nos dice que devuelve el método puede ser int void double...
-	public void agregarProducto(Producto p) {//entre paréntesis se pasan los parámetros 
-		listado[numProductos]= p; //el nuevo producto (p) se guarda en la lista de Productos 
-		numProductos++; //Despues añadimos esta línea para que cada vez que se agrege un nuevo producto se agrande su número de productos 
+	public void agregarProducto(Producto p) {		//entre paréntesis se pasan los parámetros 
+		listado[numProductos]= p; 			//el nuevo producto (p) se guarda en la lista de Productos 
+		numProductos++; 					//Despues añadimos esta línea para que cada vez que se agrege un nuevo producto se agrande su número de productos 
 	}
 	
 	public void mostrarProductos() {
+		for (int i = 0; i < numProductos; i++) {  //El for recorre el array y 
+		System.out.println(listado[i]);	
+		} 
+			
 		
 	}
 	

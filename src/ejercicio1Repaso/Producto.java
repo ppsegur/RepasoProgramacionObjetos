@@ -4,6 +4,7 @@ package ejercicio1Repaso;
 //Si en el enunciado no viene una guia para hacer las clases empezaremos por las clases POJO que son las más simples 
 public class Producto {
 	//Atributos de nuestra clase Producto
+	private int id;
 	private String nombre;
 	private double precioFabrica;
 	private int seccion; //tres secciones (se guardan en un int y no un boolean porque son mas de dos opciones)
@@ -16,8 +17,8 @@ public class Producto {
 		
 	}
 	//Constructor completo 
-	public Producto(String nombre, double precioFabrica, int seccion, boolean enVenta) {
-		//
+	public Producto(int id, String nombre, double precioFabrica, int seccion, boolean enVenta) {
+		this.id=id;
 		this.nombre = nombre;
 		this.precioFabrica = precioFabrica;
 		this.seccion = seccion;
@@ -25,8 +26,15 @@ public class Producto {
 	}
 	
 	//Getters and setters 
+	
 	public String getNombre() {
 		return nombre; 
+	}
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
 	}
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
@@ -59,7 +67,7 @@ public class Producto {
 	//Método ToString
 	@Override
 	public String toString() {
-		return "Producto [nombre=" + nombre + ", precioFabrica=" + precioFabrica + ", seccion=" + seccion + ", enVenta="
+		return "Producto [id =" + id + ", nombre=" + nombre + ", precioFabrica=" + precioFabrica + ", seccion=" + seccion + ", enVenta="
 				+ enVenta + "]";
 	}
 	//Sirve para poder cambiar cualquier valor númerico a cadena de caracteres
@@ -67,7 +75,7 @@ public class Producto {
 
 	
 	
-	
+	//TODO tengo que hacer el metodo buscar por id
 	
 	
 }

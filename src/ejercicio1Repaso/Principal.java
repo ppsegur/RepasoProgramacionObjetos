@@ -2,6 +2,11 @@ package ejercicio1Repaso;
 
 import utilidades.Leer;
 
+
+/**
+ * @author Pepe_Segura 
+ * 
+ */
 public class Principal {
 //Esta será la clase principal con el método main
 	
@@ -24,19 +29,36 @@ public class Principal {
 		Producto []listado = new Producto[tam2];
 		
 		Tienda t = new Tienda(listado,tam,3);
+		int id = 0;
 		String nombre;
 		Producto p;
 		double precioFabrica;
 		int seccion; 
 		boolean enVenta;
-		Producto p1 = new Producto("Lechuga",1, 1, true);
+		Producto p1 = new Producto(1,"Lechuga",1, 1, true);
+		Producto p2 = new Producto(2,"Tomates",1.1, 1, true);
+		Producto p3 = new Producto(3,"Cebolla",1.4, 1, true);
+		Producto p4 = new Producto(4,"Calcetines",10, 2, true);
+		Producto p5 = new Producto(5,"Cascos Xiaomi",120, 3, true);
+
+
 		t.agregarProducto(p1);
+		t.agregarProducto(p2);
+		t.agregarProducto(p3);
+		t.agregarProducto(p4);
+		t.agregarProducto(p5);
+
+
+
+
 
 		do {
 		System.out.println("""
 					Alimentación Luna 
-			Pulse 1 para agregar un producto 
-			Pulse 2 para mostrar la lista de productos
+			Pulse 1. Para agregar un producto 
+			Pulse 2. Para mostrar la lista de productos
+			Pulse 3. Para buscar por sección
+			Pulse 4. Para calcular el precio de venta de un producto 
 				""");
 		op=Leer.datoInt();
 		
@@ -61,7 +83,7 @@ public class Principal {
 				}
 				//Hay dos formar de termianr el agregado
 				//1º forma(creando el producto antes)
-				p = new Producto(nombre,precioFabrica,seccion,enVenta);
+				p = new Producto(id,nombre,precioFabrica,seccion,enVenta);
 				t.agregarProducto(p);
 				//2º Forma(instanciando directamente el producto)
 				//t.agregarProducto(new Producto(nombre,precioFabrica,seccion,enVenta));
@@ -69,6 +91,18 @@ public class Principal {
 				break;
 			 case 2:
 				 t.mostrarProductos();
+				 break;
+			 case 3:
+				 System.out.println("Diga la sección que quiera(1 alimentacion ,2 electronica, 3 ropa)  ");
+				 seccion = Leer.datoInt();
+				 t.mostrarLista(t.buscarPorSeccion(seccion));
+				 break;
+			 case 4:
+				 System.out.println("Diga el id del producto a calcular");
+				 id = Leer.datoInt();
+				 
+				 System.out.println("Diga el porcentaje que quiere ganarle al precio ");
+				 double porcentaje = Leer.datoDouble();
 				 break;
 			default:
 				break;

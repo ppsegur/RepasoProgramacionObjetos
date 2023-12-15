@@ -1,7 +1,8 @@
 package ejercicio1Repaso;
 
-import java.util.Arrays;
+import java.util.Arrays; 
 import java.util.Iterator;
+
 
 public class Tienda {
 	//esta sería la clase gestión dónde eralizaremos la mayor parte de los métodos
@@ -16,6 +17,10 @@ public class Tienda {
 		this.listado = listado;
 		this.numProductos = numProductos;
 		this.numTrabajadores = numTrabajadores;
+	}
+	//Constructor vacio 
+	public Tienda() {
+		
 	}
 	//Getters and setters 
 	public Producto[] getListado() {
@@ -57,10 +62,56 @@ public class Tienda {
 	public void mostrarProductos() {
 		for (int i = 0; i < numProductos; i++) {  //El for recorre el array y 
 		System.out.println(listado[i]);	
-		} 
+		} }
 			
+	public void mostrarLista(Producto [] lista) {
+		for (int i = 0; i < lista.length; i++) {
+			if(lista[i]!=null) {
+				System.out.println(lista[i]);
+			}
+		}
 		
+		}
+	
+		
+	
+	public Producto findByIdV2(int producto) {
+		int i = 0;
+		boolean encontrado = false;
+		while(i<numProductos && !encontrado) {
+			Producto delista = listado[i];
+			if(delista.getId()==producto) {
+				encontrado = true;
+			}else {
+				i++;
+			}
+		}if(encontrado) {
+			return listado[i];
+		}else {
+			return null;
+		}
 	}
 	
-	
-}
+		//Buscar por seccion para que nos devuelva un array
+		//en este caso nos devolvería el array de listaencontrados segun la seccion que nos pasan (int)
+		public Producto[] buscarPorSeccion(int seccion) {	
+			int index =0 ;	
+			Producto[] listaEncontrado = new Producto[numProductos];//Inicializamos el nuevo array 
+			while(index<numProductos) {			 
+				if(listado[index].getSeccion()== seccion) {
+					listaEncontrado[index] = listado[index];	
+				}
+				index++;
+				
+			}
+			return listaEncontrado;
+		}
+		public double calcularPVP(double porcentaje) {
+			
+			double pvp = 
+			return pvp;
+			
+		}
+		} 
+		//buscar el producto con el precio más bajo 
+		//TODO metodo donde se pasa un porcentaje que quiera ganar y sea sumado al precioBase 

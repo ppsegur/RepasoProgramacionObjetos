@@ -9,23 +9,26 @@ public class Producto {
 	private double precioFabrica;
 	private int seccion; //tres secciones (se guardan en un int y no un boolean porque son mas de dos opciones)
 	private boolean enVenta;
+	private double precioFinal;
 	//Acabamos de definir el objeto en nuestra aplicación 
 	
 	//los constructores son metodos que se utilizan para instanciar/crear objetos y siempre se realizan eln la clase POJO
 	//Constructor vacío 
-	public void Producto() {
+	public Producto() {
 		
 	}
 	//Constructor completo 
-	public Producto(int id, String nombre, double precioFabrica, int seccion, boolean enVenta) {
+	public Producto(int id, String nombre, double precioFabrica, int seccion, boolean enVenta, double precioFinal) {
 		this.id=id;
 		this.nombre = nombre;
 		this.precioFabrica = precioFabrica;
 		this.seccion = seccion;
 		this.enVenta = enVenta;
+		this.precioFinal = precioFinal;
 	}
 	
 	//Getters and setters 
+	
 	
 	public String getNombre() {
 		return nombre; 
@@ -64,6 +67,12 @@ public class Producto {
 	//3º Private (solo se peude acceder a ellos desde la misma clase, para acceder a atributos private se realiza con los getters and setters) 
 	
 	
+	public double getPrecioFinal() {
+		return precioFinal;
+	}
+	public void setPrecioFinal(double precioFinal) {
+		this.precioFinal = precioFinal;
+	}
 	//Método ToString
 	@Override
 	public String toString() {

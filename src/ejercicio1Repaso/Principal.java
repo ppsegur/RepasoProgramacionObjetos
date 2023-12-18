@@ -32,14 +32,14 @@ public class Principal {
 		int id = 0;
 		String nombre;
 		Producto p;
-		double precioFabrica;
+		double precioFabrica, nuevoPrecioFabrica, descuento;
 		int seccion; 
 		boolean enVenta;
-		Producto p1 = new Producto(1,"Lechuga",1, 1, true);
-		Producto p2 = new Producto(2,"Tomates",1.1, 1, true);
-		Producto p3 = new Producto(3,"Cebolla",1.4, 1, true);
-		Producto p4 = new Producto(4,"Calcetines",10, 2, true);
-		Producto p5 = new Producto(5,"Cascos Xiaomi",120, 3, true);
+		Producto p1 = new Producto(1,"Lechuga",1, 1, true, 0);
+		Producto p2 = new Producto(2,"Tomates",1.1, 1, true,0);
+		Producto p3 = new Producto(3,"Cebolla",1.4, 1, true,0);
+		Producto p4 = new Producto(4,"Calcetines",10, 2, true,0);
+		Producto p5 = new Producto(5,"Cascos Xiaomi",120, 3, true,0);
 
 
 		t.agregarProducto(p1);
@@ -50,7 +50,7 @@ public class Principal {
 
 
 
-
+		Producto prod = new Producto(); //case 5
 
 		do {
 		System.out.println("""
@@ -59,6 +59,10 @@ public class Principal {
 			Pulse 2. Para mostrar la lista de productos
 			Pulse 3. Para buscar por sección
 			Pulse 4. Para calcular el precio de venta de un producto 
+			Pulse 5. Para buscar un producto 
+			Pulse 6. Para cambiar el precio de todos los productos de una seccion
+			Pulse 7. Para poner descuento a un producto
+			Pulse 8. Para eliminar una sección de la venta
 				""");
 		op=Leer.datoInt();
 		
@@ -83,7 +87,7 @@ public class Principal {
 				}
 				//Hay dos formar de termianr el agregado
 				//1º forma(creando el producto antes)
-				p = new Producto(id,nombre,precioFabrica,seccion,enVenta);
+				p = new Producto(id,nombre,precioFabrica,seccion,enVenta, 0);
 				t.agregarProducto(p);
 				//2º Forma(instanciando directamente el producto)
 				//t.agregarProducto(new Producto(nombre,precioFabrica,seccion,enVenta));
@@ -103,8 +107,44 @@ public class Principal {
 				 
 				 System.out.println("Diga el porcentaje que quiere ganarle al precio ");
 				 double porcentaje = Leer.datoDouble();
+				 
+				 System.out.println( t.calcularPVP(porcentaje, id));
 				 break;
-			default:
+				 case 5:
+					 System.out.println("Diga el id");
+					 id =Leer.datoInt();
+					 prod =t.findByIdV2(id);
+					 
+					 if(prod == null) {
+						 	System.out.println("Producto no encontrado");
+					 }else {
+						 System.out.println(prod);//línea 53 aparece el prod como vacio para guardar el,m prducto buscado
+					 }
+					 
+					 break;
+				 case 6: 
+					 System.out.println("Diga la sección");
+					 seccion = Leer.datoInt();
+					 System.out.println("Diga el nuevo precio");
+					 nuevoPrecioFabrica = Leer.datoDouble();
+					 t.cambiarPrecioPorSeccion(seccion, nuevoPrecioFabrica);
+					 break;
+				 case 7:
+					 System.out.println("Diga el id del producto");
+					 id = Leer.datoInt();
+					 System.out.println("Diga el porcentaje que desea de descuento");
+					 descuento = Leer.datoDouble();
+					 if(t.aplicarDescuento(descuento, id)==0) {
+						 System.out.println("Este producto no tiene calculado el pvp");
+					 }else {
+					 System.out.printf("El nuevo precio aplicando el descuento será de: %.2f ",t.aplicarDescuento(descuento, id));
+					 }
+					 break;
+				 case 8:
+					 System.out.println("Diga la sección que quiere eliminar");
+					 seccion = Leer.datoInt();
+					 System.out.println("El número de productos afectado será "+t.eliminarSeccion(seccion));
+				 default:
 				break;
 			}
 		} while (op!=0);

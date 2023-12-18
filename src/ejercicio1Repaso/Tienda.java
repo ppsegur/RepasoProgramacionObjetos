@@ -91,6 +91,22 @@ public class Tienda {
 			return null;
 		}
 	}
+	public int findById(int id) { //Buscar por id 
+		int i = 0;
+		boolean encontrado = false;
+		while(i<numProductos && !encontrado) {
+			Producto delista = listado[i];
+			if(delista.getId()==id) { // == id en vez de al producto
+				encontrado = true;
+			}else {
+				i++;
+			}
+		}if(encontrado) { //devolverá la i
+			return i;
+		}else {
+			return -1; //-1 porque es una posición inexistente en un array 
+		}
+	}
 	
 		//Buscar por seccion para que nos devuelva un array
 		//en este caso nos devolvería el array de listaencontrados segun la seccion que nos pasan (int)
@@ -106,12 +122,50 @@ public class Tienda {
 			}
 			return listaEncontrado;
 		}
-		public double calcularPVP(double porcentaje) {
-			
-			double pvp = 
-			return pvp;
+		public double calcularPVP(double porcentaje, int id) {
+			int cien = 100;
+			double nuevoPrecio= 0;
+			Producto p;
+			p=findByIdV2(id);
+			nuevoPrecio = p.getPrecioFabrica()+(p.getPrecioFabrica() * porcentaje)/100;
+			p.setPrecioFinal(nuevoPrecio);
+			return nuevoPrecio;
 			
 		}
-		} 
-		//buscar el producto con el precio más bajo 
-		//TODO metodo donde se pasa un porcentaje que quiera ganar y sea sumado al precioBase 
+		 public void cambiarPrecioPorSeccion(int seccion, double nuevoPrecioFabrica) {//Mo hace falta el findBySeccion
+		        for (int i = 0; i < numProductos; i++) {
+		            if (listado[i].getSeccion() == seccion) { //Ya que con esto comprobaremos la sección de UN PRODUCTO, como es un bucle hará uno tras otra
+		                listado[i].setPrecioFabrica(nuevoPrecioFabrica);
+		            }
+		        } 
+		}
+		 public double aplicarDescuento(double descuento, int id) {
+			 double precioDescontado =0;
+			 Producto p;
+			 p = findByIdV2(id);
+			 double cien = 100;
+			
+			 if(p.getPrecioFinal()!= 0) {//No se deben usar sysos como opcion podriamos poner este syso en el pincipal 
+				 precioDescontado = p.getPrecioFinal() - (p.getPrecioFinal() * descuento )/ cien;
+			 }else {
+				 
+			 }
+			 return precioDescontado;}
+		 //También podríamos haberlo hecho con el metodo de calcularPvp pasandole también el porcentaje de pvp como parámetro
+		//retunr calcularPvp(porcentaje, id) - (calcularPVP(ganancia, id) * descuento / cien)
+	public int eliminarSeccion (int seccion) {
+		int contador = 0;
+		//Lo podriamos en void pero vamos a ponerlo en int para devolveer el num de productos que se veran afectados
+		for (int i = 0; i < numProductos; i++) {
+			if(listado[i].getSeccion()==seccion){
+				listado[i].setEnVenta(false);
+				contador++;
+			}
+		
+			
+		}
+		return contador ;
+	}
+}
+//buscar el producto con el precio más bajo 
+	

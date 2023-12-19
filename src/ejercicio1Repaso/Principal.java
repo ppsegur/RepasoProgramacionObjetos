@@ -35,13 +35,14 @@ public class Principal {
 		double precioFabrica, nuevoPrecioFabrica, descuento;
 		int seccion; 
 		boolean enVenta;
+		//instanciamos los objetos
 		Producto p1 = new Producto(1,"Lechuga",1, 1, true, 0);
 		Producto p2 = new Producto(2,"Tomates",1.1, 1, true,0);
 		Producto p3 = new Producto(3,"Cebolla",1.4, 1, true,0);
 		Producto p4 = new Producto(4,"Calcetines",10, 2, true,0);
 		Producto p5 = new Producto(5,"Cascos Xiaomi",120, 3, true,0);
 
-
+		//agregamos esos productos llamando al método agregarProducto de la clase Tienda	
 		t.agregarProducto(p1);
 		t.agregarProducto(p2);
 		t.agregarProducto(p3);
@@ -52,8 +53,9 @@ public class Principal {
 
 		Producto prod = new Producto(); //case 5
 
-		do {
+		do { //Menu 
 		System.out.println("""
+			
 					Alimentación Luna 
 			Pulse 1. Para agregar un producto 
 			Pulse 2. Para mostrar la lista de productos
@@ -63,14 +65,15 @@ public class Principal {
 			Pulse 6. Para cambiar el precio de todos los productos de una seccion
 			Pulse 7. Para poner descuento a un producto
 			Pulse 8. Para eliminar una sección de la venta
+			Pulse 0. Para salir del programa
 				""");
 		op=Leer.datoInt();
 		
 			switch (op) {
-			case 0:
+			case 0: //case para salir 
 				System.out.println("Saliendo del programa ");
 				break;
-			case 1: 
+			case 1: //case para agregar un producto 
 				System.out.println("Diga el nombre del producto que quiere añadir ");
 				nombre=Leer.dato();
 				System.out.println("Diga su precio de fábrica");
@@ -93,15 +96,15 @@ public class Principal {
 				//t.agregarProducto(new Producto(nombre,precioFabrica,seccion,enVenta));
 			
 				break;
-			 case 2:
+			 case 2:  //muestra la lista de productos 
 				 t.mostrarProductos();
 				 break;
-			 case 3:
+			 case 3:// Para buscar por seccion 
 				 System.out.println("Diga la sección que quiera(1 alimentacion ,2 electronica, 3 ropa)  ");
 				 seccion = Leer.datoInt();
 				 t.mostrarLista(t.buscarPorSeccion(seccion));
 				 break;
-			 case 4:
+			 case 4: // 
 				 System.out.println("Diga el id del producto a calcular");
 				 id = Leer.datoInt();
 				 
